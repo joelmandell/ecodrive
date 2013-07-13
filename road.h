@@ -2,6 +2,7 @@
 #define ROAD_H
 
 #include <QVector>
+#include <QGraphicsScene>
 
 class Road
 {
@@ -9,11 +10,15 @@ class Road
 public:
     Road();
     ~Road();
-    void lookAheadOnRoad(int meters);
-    void addHill(int upHillAltitude, int upHillDistanceLength, int downHillDistanceLength );
+    void lookAheadOnRoad(float meters);
+    void addHill(float hillElevation, float upHillDistanceLength, float downHillDistanceLength );
+    void addStraightRoad(float distanceLength);
+    void roadBuilder(float distance, float elevation);
+    QGraphicsScene *paintRoad();
 
 private:
-    QVector<int> roadPattern;
+    QVector<float> *roadPattern;
+
 };
 
 #endif // ROAD_H
