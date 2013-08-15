@@ -14,7 +14,10 @@ public:
     void addHill(float hillElevation, float upHillDistanceLength, float downHillDistanceLength );
     void addStraightRoad(float distanceLength);
     void roadBuilder(float distance, float elevation);
-    QGraphicsScene *paintRoad();
+    QGraphicsScene *paintRoad(QGraphicsScene* scene);
+    QGraphicsScene *paintCar(QGraphicsScene* scene, int speed);
+    QGraphicsScene *paintCar(QGraphicsScene* scene);
+
 
 private:
     QVector<float> *roadPattern;

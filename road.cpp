@@ -1,6 +1,8 @@
 #include "road.h"
 #include <QGraphicsScene>
 #include <QDebug>
+#include <QDir>
+#include <QGraphicsPixmapItem>
 
 Road::Road() {
 
@@ -10,12 +12,36 @@ Road::Road() {
 }
 
 Road::~Road() {
-
+    roadPattern->clear();
+    delete roadPattern;
 }
 
-QGraphicsScene *Road::paintRoad()
+QGraphicsScene *Road::paintCar(QGraphicsScene *scene, int speed=0)
 {
-    QGraphicsScene *scene = new QGraphicsScene();
+    qDebug() << QDir::currentPath()+"/assets/car.png";
+    QPixmap pMap = QPixmap(QDir::currentPath()+"/assets/car.png");
+    QTransform transform;
+    //transform.rotate(-45);
+    transform.scale(0.25,0.25);
+    QGraphicsPixmapItem *pm = scene->addPixmap( QPixmap(pMap.transformed(transform)));
+    pm->setPos(roadPattern->at(0),-15);
+    return scene;
+}
+
+QGraphicsScene *Road::paintCar(QGraphicsScene *scene)
+{
+    qDebug() << QDir::currentPath()+"/assets/car.png";
+    QPixmap pMap = QPixmap(QDir::currentPath()+"/assets/car.png");
+    QTransform transform;
+    //transform.rotate(-45);
+    transform.scale(0.25,0.25);
+    QGraphicsPixmapItem *pm = scene->addPixmap( QPixmap(pMap.transformed(transform)));
+    pm->setPos(roadPattern->at(0),-15);
+    return scene;
+}
+
+QGraphicsScene *Road::paintRoad(QGraphicsScene *scene)
+{
 
     int y=0;
 
